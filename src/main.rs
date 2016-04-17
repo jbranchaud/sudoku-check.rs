@@ -1,7 +1,7 @@
-fn check_unique_sudoku_group(row: &Vec<i32>) -> bool {
+fn check_unique_sudoku_group(group: &Vec<i32>) -> bool {
     for i in 1..10 {
         let curr_value: &i32 = &i;
-        if !row.contains(curr_value) {
+        if !group.contains(curr_value) {
             return false;
         }
     }
