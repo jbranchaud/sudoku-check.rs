@@ -1,0 +1,6 @@
+[package]
+name = "sudoku-check"
+version = "0.1.0"
+authors = ["jbranchaud <jbranchaud@gmail.com>"]
+
+[dependencies]
