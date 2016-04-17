@@ -1,4 +1,4 @@
-fn check_row(row: &Vec<i32>) -> bool {
+fn check_unique_sudoku_group(row: &Vec<i32>) -> bool {
     for i in 1..10 {
         let curr_value: &i32 = &i;
         if !row.contains(curr_value) {
@@ -11,7 +11,7 @@ fn check_row(row: &Vec<i32>) -> bool {
 
 fn check_rows(rows: &Vec<Vec<i32>>) -> bool {
     for row in rows {
-        if !check_row(row) {
+        if !check_unique_sudoku_group(row) {
             return false
         }
     }
@@ -29,7 +29,7 @@ fn check_columns(rows: &Vec<Vec<i32>>) -> bool {
     }
 
     for column in &columns {
-        if !check_row(column) {
+        if !check_unique_sudoku_group(column) {
             return false;
         }
     }
@@ -48,7 +48,7 @@ fn check_boxes(rows: &Vec<Vec<i32>>) -> bool {
     }
 
     for curr_box in &boxes {
-        if !check_row(curr_box) {
+        if !check_unique_sudoku_group(curr_box) {
             return false;
         }
     }
