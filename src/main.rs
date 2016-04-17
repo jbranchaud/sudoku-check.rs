@@ -30,7 +30,26 @@ fn check_columns(rows: &Vec<Vec<i32>>) -> bool {
 
     for column in &columns {
         if !check_row(column) {
-            return false
+            return false;
+        }
+    }
+
+    return true;
+}
+
+fn check_boxes(rows: &Vec<Vec<i32>>) -> bool {
+    let mut boxes: Vec<Vec<i32>> = vec![vec![]; 9];
+
+    for row_index in 0..9 {
+        for column_index in 0..9 {
+            let box_index = (row_index / 3) * 3 + (column_index / 3);
+            boxes[box_index].push(rows[row_index][column_index]);
+        }
+    }
+
+    for curr_box in &boxes {
+        if !check_row(curr_box) {
+            return false;
         }
     }
 
@@ -59,4 +78,9 @@ fn main() {
         println!("The sudoku puzzle is invalid");
     }
     println!("The columns check out!");
+
+    if !check_boxes(&sudoku) {
+        println!("The sudoku puzzle is invalid");
+    }
+    println!("The boxes check out!");
 }
