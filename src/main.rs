@@ -9,6 +9,16 @@ fn check_row(row: &Vec<i32>) -> bool {
     return true;
 }
 
+fn check_rows(rows: Vec<Vec<i32>>) -> bool {
+    for row in &rows {
+        if !check_row(row) {
+            return false
+        }
+    }
+
+    return true;
+}
+
 fn main() {
     let sudoku: Vec<Vec<i32>> = vec![
         vec![5,3,4,6,7,8,9,1,2],
@@ -22,10 +32,8 @@ fn main() {
         vec![3,4,5,2,8,6,1,7,9]
     ];
 
-    for row in &sudoku {
-        if !check_row(row) {
-            println!("The sudoku puzzle is invalid");
-        }
+    if !check_rows(sudoku) {
+        println!("The sudoku puzzle is invalid");
     }
     println!("The rows check out!");
 }
